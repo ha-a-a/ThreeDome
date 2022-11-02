@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    druid:
+      operator:
+        url: jdbc:mysql://10.18.54.199:3306/mario_admin?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+        username: mario_admin_rw
+        password: 4301vN59116T5Ug
+        driverClassName: com.mysql.jdbc.Driver
+        initial-size: 2
+        max-active: 2
+        min-idle: 2
+        test-on-borrow: true
+        validation-query: select 1
+        connection-init-sqls: SET NAMES utf8mb4
+      message:
+        url: jdbc:mysql://10.18.54.199:3306/mario_admin?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+        username: mario_admin_rw
+        password: 4301vN59116T5Ug
+        driverClassName: com.mysql.jdbc.Driver
+        initial-size: 2
+        max-active: 2
+        min-idle: 2
+        test-on-borrow: true
+        validation-query: select 1
+        connection-init-sqls: SET NAMES utf8mb4
+  jpa:
+    show-sql: true

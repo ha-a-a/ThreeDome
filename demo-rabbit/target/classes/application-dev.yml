@@ -1,0 +1,17 @@
+server:
+  servlet:
+    context-path: /demo-rabbit
+  port: 8083
+
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    virtual-host: vhost_one
+    username: tangmengyue
+    password: Sohu@12345
+    template:
+    retry:
+    enabled: false
+    initial-interval: 2000ms
+
