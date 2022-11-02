@@ -1,0 +1,19 @@
+server:
+  servlet:
+    context-path: /demo-redis
+  port: 8082
+
+spring:
+  redis:
+    host:
+    port: 6379
+    password:
+    max-wait: -1ms
+    max-idle: 8
+    max-active: 8
+    min-idle: 1
+    shutdown-timeout: 100ms
+    redisson:
+      file: classpath:redisson-config-${spring.profiles.active}.yaml
+
+

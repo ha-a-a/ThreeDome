@@ -1,0 +1,4 @@
+demo\nacos\service\DemoService.class
+demo\nacos\service\DemoServiceImpl.class
+demo\nacos\controller\NacosConsumerController.class
+demo\NacosConsumerApplication.class

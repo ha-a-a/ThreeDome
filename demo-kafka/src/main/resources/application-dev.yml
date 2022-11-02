@@ -1,0 +1,20 @@
+server:
+  servlet:
+    context-path: /demo-kafka
+  port: 8086
+
+spring:
+  kafka:
+    remote:
+      bootstrap-servers:  xxxx
+      consumer:
+        auto-offset-reset: earliest
+        group-id: group_tmy_test
+      topic: xxxx
+
+    local:
+      bootstrap-servers: localhost:9093
+      consumer:
+        auto-offset-reset: earliest
+        group-id: group_tmy_test
+      topic: demo-kafka-tmy

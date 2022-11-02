@@ -1,0 +1,13 @@
+GET {{host}}/redisson/test/api/get
+Accept: application/json
+
+###
+GET {{host}}/redisson/test/api/bloomFilter?capacity=1000&rate=0.01&filterName=fourFilter&value = fourtmy&value2 = 112fourtmy
+Accept: application/json
+
+###
+
+
+
+
+

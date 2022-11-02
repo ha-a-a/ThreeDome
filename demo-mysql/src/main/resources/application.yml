@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active: dev
+  cache:
+    type: caffeine
+    caffeine:
+      spec: expireAfterWrite=60s
+server:
+  servlet:
+    context-path: /demo-mysql
+  port: 8084

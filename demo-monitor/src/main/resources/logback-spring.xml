@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<include resource="org/springframework/boot/logging/logback/defaults.xml" />
+
+	<springProperty scope="context" name="SYSLOG_FILE" source="logging.file.name" defaultValue="/opt/logs/app.log" />
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- log pattern -->
+		<encoder>
+			<layout class="org.apache.skywalking.apm.toolkit.log.logback.v1.x.TraceIdPatternLogbackLayout">
+				<pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} @project.name@ ${MY_POD_NAME} %thread %logger{36} %-5level [%tid] %msg%n</pattern>
+			</layout>
+		</encoder>
+	</appender>
+
+	<!-- 演示按时间滚动的策略 -->
+	<appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${SYSLOG_FILE}</file>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/opt/logs/@project.name@/app.${MY_POD_NAME}.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<!-- 保留 7 天数据，默认无限-->
+			<maxHistory>14</maxHistory>
+		</rollingPolicy>
+		<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+			<layout class="org.apache.skywalking.apm.toolkit.log.logback.v1.x.TraceIdPatternLogbackLayout">
+				<pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} @project.name@ ${MY_POD_NAME} %thread %logger{36} %-5level [%tid] %msg%n</pattern>
+			</layout>
+			<charset>UTF-8</charset>
+		</encoder>
+	</appender>
+
+	<root level="${logging.level.root}">
+		<appender-ref ref="console" />
+		<appender-ref ref="file" />
+	</root>
+</configuration>

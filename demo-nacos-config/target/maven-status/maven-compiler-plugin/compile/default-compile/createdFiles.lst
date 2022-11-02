@@ -1,0 +1,3 @@
+demo\nacos\controller\NacosConfigController.class
+demo\nacos\controller\NacosDiscoveryController.class
+demo\NacosConfigApplication.class

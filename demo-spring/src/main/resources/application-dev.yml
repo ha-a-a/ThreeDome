@@ -1,0 +1,15 @@
+server:
+  servlet:
+    context-path: /demo-spring
+  port: 8081
+
+async:
+  task:
+    name: Async-threeDemo-test
+    core-pool-size: 2
+    max-pool-size: 8
+    queue-capacity: 64
+priv:
+  tmy:
+    prefix: namebefore
+    suffix: nameafter

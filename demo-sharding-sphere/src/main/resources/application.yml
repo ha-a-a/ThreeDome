@@ -1,0 +1,21 @@
+spring:
+  shardingsphere:
+    datasource:
+      names: tmy
+      tmy:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/tmy
+        username: root
+        password: 123456
+    sharding:
+      tables:
+        tb_order:
+          actual-data-nodes: tmy.tb_order_taobao,tmy.tb_order_aliyun,tmy.tb_order_tmall
+          table-strategy:
+            standard:
+              sharding-column: merchant
+              precise-algorithm-class-name: com.example.demo.utils.OrderShardingAlgorithm
+    props:
+      sql:
+        show: true
