@@ -10,15 +10,7 @@
     </parent>
 
     <version>0.0.1-SNAPSHOT</version>
-    <artifactId>spring-cannel</artifactId>
-    <name>spring-cannel</name>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.alibaba.otter</groupId>
-            <artifactId>canal.client</artifactId>
-            <version>1.1.0</version>
-        </dependency>
-    </dependencies>
+    <artifactId>demo-javaagent-hello</artifactId>
+    <name>demo-javaagent-hello</name>
 
 </project>
