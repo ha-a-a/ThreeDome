@@ -29,7 +29,7 @@ public class WebConfig {
     public FilterRegistrationBean<CustomFirstFilter> filterRegistrationBean() {
         FilterRegistrationBean<CustomFirstFilter> filterRegistrationBean = new FilterRegistrationBean<>();
         // 过滤路径
-        filterRegistrationBean.addUrlPatterns("/*");
+        filterRegistrationBean.addUrlPatterns("/filter/*","/interceptor/*");
         // nofilter，不过滤路径
         filterRegistrationBean.addInitParameter("noFilter", "/filter/one,/filter/two,/filter/index,/filter/noRoot,/interceptor/five");
         filterRegistrationBean.setName("CustomFirstFilter");
@@ -42,7 +42,7 @@ public class WebConfig {
     public FilterRegistrationBean<CustomSecondFilter> secondFilterRegistrationBean() {
         FilterRegistrationBean<CustomSecondFilter> filterRegistrationBean = new FilterRegistrationBean<>();
         // 过滤路径
-        filterRegistrationBean.addUrlPatterns("/*");
+        filterRegistrationBean.addUrlPatterns("/filter/*","/interceptor/*");
         filterRegistrationBean.addInitParameter("noFilter", "/filter/four,/filter/three,/filter/index,/filter/noRoot,/interceptor/five");
         filterRegistrationBean.setName("CustomSecondFilter");
         filterRegistrationBean.setFilter(secondFilter);

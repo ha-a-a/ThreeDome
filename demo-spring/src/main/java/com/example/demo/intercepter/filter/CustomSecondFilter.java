@@ -50,10 +50,10 @@ public class CustomSecondFilter implements Filter {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
             log.info("second request forward /index");
-            request.getRequestDispatcher("/index").forward(servletRequest, servletResponse);
+            request.getRequestDispatcher("/filter/index").forward(servletRequest, servletResponse);
         }
         stopWatch.stop();
-        log.info("second doFilter after, path={},cost={}", request.getRequestURL().toString(), stopWatch.getTaskInfo());
+        log.info("second doFilter after, path={},cost={}", request.getRequestURL().toString(), stopWatch.prettyPrint());
 
     }
 

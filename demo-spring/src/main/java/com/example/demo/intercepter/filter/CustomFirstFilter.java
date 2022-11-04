@@ -43,10 +43,10 @@ public class CustomFirstFilter implements Filter {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
             log.info("first request forward /noRoot");
-            request.getRequestDispatcher("/noRoot").forward(servletRequest, servletResponse);
+            request.getRequestDispatcher("/filter/noRoot").forward(servletRequest, servletResponse);
         }
         stopWatch.stop();
-        log.info("first doFilter after, path={},cost={}", request.getRequestURL().toString(), stopWatch.getTaskInfo());
+        log.info("first doFilter after, path={},cost={}", request.getRequestURL().toString(), stopWatch.prettyPrint());
 
     }
 
