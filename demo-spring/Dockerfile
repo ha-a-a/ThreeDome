@@ -1,7 +1,6 @@
 FROM tmydockers/jdk8-maven-base-image:latest
 VOLUME /tmp
 COPY ../ /
-RUN echo $PWD 
 RUN  mvn clean package -DskipTests -pl demo-spring
 ENV JAVA_OPTS -server -Xms1536m -Xmx1536m -Dfile.encoding=UTF-8/
 ENV profile dev
