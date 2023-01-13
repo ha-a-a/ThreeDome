@@ -19,7 +19,7 @@
         <module>demo-spring-netty-server</module>
         <module>demo-spring-netty-client</module>
         <module>demo-rocketmq</module>
-        <module>spring-canel</module>
+        <module>spring-cannel</module>
         <module>demo-javaagent</module>
         <module>demo-javaagent-hello</module>
 
