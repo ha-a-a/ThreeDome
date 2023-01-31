@@ -56,7 +56,7 @@ public class MovieService {
                 .query("" +
                         "MATCH (movie:Movie {title: $title}) " +
                         "OPTIONAL MATCH (person:Person)-[r]->(movie) " +
-                        "WITH movie, COLLECT({ name: person.name, job: REPLACE(TOLOWER(TYPE(r)), '_in', ''), role: HEAD(r.role) }) as cast " +
+                        "WITH movie, COLLECT({ name: person.name, job: REPLACE(TOLOWER(TYPE(r)), '_in', ''), role: r.role }) as cast " +
                         "RETURN movie { .title, cast: cast }"
                 )
                 .in(database())
