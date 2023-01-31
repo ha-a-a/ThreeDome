@@ -2,18 +2,20 @@ package com.example.demoneo4j.domain.movie.service;
 
 import com.example.demoneo4j.domain.movie.model.ActRelationEntity;
 import com.example.demoneo4j.domain.movie.model.MovieEntity;
+import com.example.demoneo4j.domain.movie.model.MovieEntityDTO;
 import com.example.demoneo4j.domain.person.model.PersonEntity;
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.testcontainers.shaded.com.fasterxml.jackson.core.JsonProcessingException;
+import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
+import org.testcontainers.shaded.com.fasterxml.jackson.databind.util.JSONPObject;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -31,11 +33,23 @@ class MovieServiceTest {
     private MovieService movieService;
 
     @Test
-    public void getMovies() {
+    public void getMoviesByOmg() {
         List<MovieEntity> all = movieService.findAll();
         log.info("all movies={}", all);
     }
 
+    @Test
+    public void getMoviesByNeo4jClient() throws JsonProcessingException {
+        MovieEntityDTO movieByTitle = movieService.getMovieByTitle("满江红");
+        log.info("by title movie={}", new ObjectMapper().writeValueAsString(movieByTitle));
+    }
+
+
+    @Test
+    public void getMoviesBySession() {
+        Map<String, List<Object>> all = movieService.getMovieGraph();
+        log.info("all movies={}", JSONObject.wrap(all).toString());
+    }
     @Test
     public void getMoviesByTitle() {
         MovieEntity movie = movieService.findOneByTitle("满江红");
@@ -127,5 +141,10 @@ class MovieServiceTest {
         });
         MovieEntity save = movieService.save(movie);
         log.info("update act rel, movie={}", save);
+    }
+    @Test
+    public void testVoteInMovieByTitle(){
+        int voteInMovieByTitle = movieService.voteInMovieByTitle("满江红");
+        log.info("vote movie {}",voteInMovieByTitle==1);
     }
 }
