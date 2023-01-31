@@ -22,9 +22,5 @@ public class PersonEntity {
     @Id
     private  String name;
     private  Integer born;
-    public PersonEntity(Integer born, String name) {
-        this.born = born;
-        this.name = name;
-    }
     //Getters omitted
 }

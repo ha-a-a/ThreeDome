@@ -31,13 +31,13 @@ public class MovieEntity {
     private  String title;
     @Property("tagline")
     private  String description;
+    /**
+     * 两种写法导致movie 被save时，ACTED_IN 关系每次都会创建，DIRECTED 关系会被更新，是因为ACTED_IN的关系存在属性，为了保证属性的唯一，主键必须自动生成的，
+     * DIRECTED没有关系属性，所以不需要唯一id
+     */
     @Relationship(type = "ACTED_IN", direction = INCOMING)
-    private Set<PersonEntity> actors = new HashSet<>();
+    private Set<ActRelationEntity> actors = new HashSet<>();
     @Relationship(type = "DIRECTED", direction = INCOMING)
     private Set<PersonEntity> directors = new HashSet<>();
-    public MovieEntity(String title, String description) {
-        this.title = title;
-        this.description = description;
-    }
     //Getters omitted for brevity
 }
