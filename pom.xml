@@ -23,13 +23,13 @@
         <module>demo-javaagent</module>
         <module>demo-javaagent-hello</module>
         <module>demo-neo4j</module>
-
+        <module>demo-es</module>
 
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.4.RELEASE</version>
+        <version>2.2.13.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example.demo</groupId>

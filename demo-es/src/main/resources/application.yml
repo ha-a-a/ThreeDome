@@ -1,0 +1,13 @@
+
+spring:
+  elasticsearch:
+    rest:
+      uris: localhost:9200
+      username: ttttt
+      password: 123456
+      read-timeout: 60s
+
+  data:
+    elasticsearch:
+      repositories:
+        enabled: true
