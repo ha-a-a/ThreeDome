@@ -34,10 +34,15 @@ public class ReactorCoreTest {
                 .filter(s -> s.getName().contains("tmy"))
                 .map(s -> {
                     s.setBorn(s.getBorn() + 10);
+                    if (s.getName().equals("tmy3")) {
+                        throw new RuntimeException("....");
+                    }
                     return s;
                 })
                 .distinct(PersonEntity::getName);
-        just.subscribe(s -> {
+        just.subscribe(s ->
+
+        {
             System.out.println(s.getName() + "——" + s.getBorn());
         });
         Thread.sleep(10000);
