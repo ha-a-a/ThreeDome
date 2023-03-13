@@ -13,8 +13,6 @@
         <module>demo-nacos-config</module>
         <module>demo-nacos-provider</module>
         <module>demo-nacos-consumer</module>
-        <module>demo-dubbo-provider</module>
-        <module>demo-dubbo-consumer</module>
         <module>demo-qrcode</module>
         <module>demo-spring-netty-server</module>
         <module>demo-spring-netty-client</module>
