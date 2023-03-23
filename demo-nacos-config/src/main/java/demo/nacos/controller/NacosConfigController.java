@@ -14,10 +14,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/config")
 public class NacosConfigController {
-    @NacosValue(value = "${useLocalCache:false}",autoRefreshed = true)
+
+    @NacosValue(value = "${test.data.example}")
+    private String message;
+
+    @GetMapping("message/get")
+    public String getMessage() {
+        return message;
+    }
+
+    @NacosValue(value = "${useLocalCache:false}", autoRefreshed = true)
     private boolean useLocalCache;
-    @GetMapping("/get")
-    public boolean test(){
+
+    @GetMapping(value = "/get")
+    public boolean get() {
         return useLocalCache;
     }
 }
