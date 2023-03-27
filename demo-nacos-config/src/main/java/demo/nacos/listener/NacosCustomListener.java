@@ -21,6 +21,4 @@ public class NacosCustomListener {
     public void receiveConfigInfo(String config) {
         log.info("config={}", config);
     }
-
-
 }

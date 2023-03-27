@@ -15,7 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/config")
 public class NacosConfigController {
 
-    @NacosValue(value = "${test.data.example}")
+
+    @NacosValue(value = "${test.data.example}", autoRefreshed = true)
     private String message;
 
     @GetMapping("message/get")
