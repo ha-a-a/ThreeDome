@@ -9,13 +9,13 @@ nacos:
   config:
     bootstrap:
       enable: true
-    server-addr: 172.0.0.1:8848
+    server-addr: https://test.tmy.com/:8848
     username: nacos
     password: nacos
     namespace: three-demo-test
     group: test_group
-    data-ids: test_data.yml
+    data-ids: test_data.yml, test_mysql.yml
     type: yaml
     auto-refresh: true
   discovery:
-    server-addr: 172.0.0.1:8848
+    server-addr: https://test.tmy.com/:8848
