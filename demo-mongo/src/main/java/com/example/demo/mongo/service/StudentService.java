@@ -23,7 +23,7 @@ public class StudentService {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional(transactionManager = "mongoTransactionManager", rollbackFor = Exception.class)
     public void insertWithTransaction(List<StudentInfo> studentInfos) {
         for (StudentInfo studentInfo : studentInfos) {
             mongoTemplate.insert(studentInfo, "StudentInfo");
