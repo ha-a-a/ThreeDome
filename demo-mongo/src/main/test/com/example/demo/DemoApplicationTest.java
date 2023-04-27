@@ -50,6 +50,17 @@ public class DemoApplicationTest {
         studentService.insertWithTransaction(list);
     }
 
+    /**
+     * 乐观锁原理：
+     * UpdateResult result = doUpdate(collectionName, query, update, toSave.getClass(), false, false);
+     *
+     * 		if (result.getModifiedCount() == 0) {
+     *
+     * 			throw new OptimisticLockingFailureException(
+     * 					String.format("Cannot save entity %s with version %s to collection %s. Has it been modified meanwhile?",
+     * 							source.getId(), source.getVersion(), collectionName));
+     *                }
+     */
     @Test
     public void testUpdateWithVersion() {
         TeacherInfo tea2 = teacherService.insert(TeacherInfo.builder().name("tea2").age(30).subjectId(1).build());
@@ -68,6 +79,4 @@ public class DemoApplicationTest {
         TeacherInfo tea2_v2 = teacherService.findOneByName("tea2");
         System.out.println("tea2_v2=" + tea2_v2);
     }
-
-
 }
