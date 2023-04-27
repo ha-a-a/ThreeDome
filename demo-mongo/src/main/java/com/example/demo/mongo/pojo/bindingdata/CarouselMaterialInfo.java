@@ -1,9 +1,10 @@
 package com.example.demo.mongo.pojo.bindingdata;
 
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
-import javax.validation.constraints.NotBlank;
 
 /**
  * @FUNC
@@ -15,21 +16,8 @@ import javax.validation.constraints.NotBlank;
 @Document("carousel_material")
 public class CarouselMaterialInfo extends MaterialInfo {
 
-    @NotBlank
+    @Id
+    @Field("_id")
+    private String id;
     public String activityUrl;
-
-    @Override
-    public String getMaterial(String mid) {
-        return "mid:"+mid;
-    }
-
-    @Override
-    public String sortMaterial(String materialIdList) {
-        return null;
-    }
-
-    @Override
-    public String afterReturn(String materialInfoList) {
-        return null;
-    }
 }
