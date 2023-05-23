@@ -3,7 +3,6 @@ package com.example.demo.groovy;
 import groovy.lang.Binding;
 import groovy.lang.GroovyShell;
 import groovy.lang.Script;
-import org.codehaus.groovy.control.CompilerConfiguration;
 import org.springframework.util.ClassUtils;
 
 import java.io.File;
@@ -15,10 +14,9 @@ import java.io.IOException;
  * @Description TODO
  * @createTime 2023年05月09日 18:34:00
  */
-public class HelloWorldFromGroovy {
+public class MainGroovy {
     public static void main(String[] args) throws IOException {
-        testGroovyShell();
-        testBindScript("groovy");
+//        testStaticCompile();
         testConfigure();
     }
 
@@ -32,6 +30,12 @@ public class HelloWorldFromGroovy {
         parse.invokeMethod("HelloWorld", null);
     }
 
+    /**
+     * 应用程序和script之间传递数据
+     *
+     * @param something
+     * @throws IOException
+     */
     public static void testBindScript(String something) throws IOException {
         Binding binding = new Binding();
         binding.setProperty("something", something);
@@ -41,20 +45,21 @@ public class HelloWorldFromGroovy {
         script.invokeMethod("HelloSomething", null);
     }
 
+    /**
+     * 继承script类，自定义script的基类MyScript
+     * Binding不生效
+     */
     public static void testConfigure() {
-        CompilerConfiguration customConfig = new CompilerConfiguration();
-        customConfig.setScriptBaseClass("MyScript");
-        GroovyShell customShell = new GroovyShell(ClassUtils.getDefaultClassLoader(), new Binding(), customConfig);
-        Script greet = customShell.parse("greet");
-        greet.setProperty("name", "tmy");
-        greet.run();
+        GroovyService groovyService = new GroovyService();
+        groovyService.customGroovyConfigure();
+    }
 
-        CompilerConfiguration compilerConfiguration = new CompilerConfiguration();
-        compilerConfiguration.setScriptBaseClass("MyScript1");
-        GroovyShell compilerShell = new GroovyShell(ClassUtils.getDefaultClassLoader(), new Binding(), compilerConfiguration);
-        Script myScriptMethod = compilerShell.parse("myScriptMethod");
-        myScriptMethod.setProperty("name", "by yourself");
-        myScriptMethod.run();
-
+    /**
+     * src下的groovy自动编译为class文件
+     */
+    public static void testStaticCompile() {
+        MyStaticCompileScript myScript1 = new MyStaticCompileScript();
+        myScript1.setProperty("name", "hhhh");
+        myScript1.myScriptMethod();
     }
 }

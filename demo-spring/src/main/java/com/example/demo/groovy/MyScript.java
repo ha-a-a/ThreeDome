@@ -7,10 +7,19 @@ import groovy.lang.Script;
  * @Description
  * @createTime 2023年05月22日 16:52:00
  */
-abstract class MyScript extends Script {
-    String name;
+public abstract class MyScript extends Script {
+    private String name;
+    private String replyName;
 
-    String greet() {
-        return "Hello, $name";
+    public String greet() {
+        System.out.println(name);
+        return "hello, it's " + name;
+
+    }
+
+    public String reply() {
+        System.out.println(replyName);
+        return "hello, i'm " + replyName;
+
     }
 }

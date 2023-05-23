@@ -7,5 +7,5 @@ def HelloWorld() {
 def String something;
 
 def HelloSomething() {
-    print(something)
+    println(something)
 }
