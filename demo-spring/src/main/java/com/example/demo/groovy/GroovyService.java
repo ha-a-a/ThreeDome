@@ -19,10 +19,10 @@ public class GroovyService {
         Binding binding = new Binding();
         GroovyShell customShell = new GroovyShell(this.getClass().getClassLoader(), binding, customConfig);
         Script greet = customShell.parse("greet()");
+        // property不生效
         greet.setProperty("name", "tmy");
         boolean b = greet instanceof MyScript;
         System.out.println("greet from MyScript:" + b);
-        // asm字节动态加载
         Object greetRun = greet.run();
         System.out.println("return greet data=" + JSONObject.toJSONString(greetRun));
         // 每次parse都会生成新的script对象，对应一个新的script${n}.groovy文件

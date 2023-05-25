@@ -1,4 +1,4 @@
-package com.example.demo.groovy
+package script
 
 def String name;
 
