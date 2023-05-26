@@ -5,4 +5,5 @@ class Foo {
     def printlnName() {
         println("Foo" + name)
     }
+    def bar() { "bar" }
 }

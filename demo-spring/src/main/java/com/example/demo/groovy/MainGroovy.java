@@ -21,7 +21,25 @@ public class MainGroovy {
 //        testBindScript("tttt");
 //        testConfigure();
 //        testClassLoader();
-        testDynamicLoader();
+//        testDynamicLoader();
+        testCompileScript();
+//        testDelegatingScript();
+    }
+
+    public static void testDelegatingScript() throws IOException, InstantiationException, IllegalAccessException {
+        GroovyClassLoader groovyClassLoader = new GroovyClassLoader();
+        // from File
+        String path = ClassUtils.getDefaultClassLoader().getResource("").getPath();
+        File fooMain = new File(path + "script/FooMain.groovy");
+        Class myScript1 = groovyClassLoader.parseClass(fooMain);
+        GroovyObject fooMainObject = (GroovyObject) myScript1.newInstance();
+    }
+
+    public static void testCompileScript() {
+        MyStaticCompileScript myStaticCompileScript = new MyStaticCompileScript();
+        myStaticCompileScript.setProperty("name", "tttt");
+        myStaticCompileScript.myScriptMethod();
+        myStaticCompileScript.myScriptMethod2();
     }
 
     public static void testGroovyShell() {
@@ -80,7 +98,7 @@ public class MainGroovy {
     }
 
     /**
-     * class会动态加载ReloadingTest.groovy，然后生成相同的class，不同的新groovyObject
+     * class会动态加载ReloadingTest.groovy，然后生成新的class，不同的新groovyObject
      */
     public static void testDynamicLoader() throws IOException, ScriptException, ResourceException, InterruptedException {
         GroovyScriptEngine groovyScriptEngine = new GroovyScriptEngine("/Users/tangmengyue/tmyspace/sohuspace/project/ThreeDome/demo-spring/src/main/resources" + "/script");
