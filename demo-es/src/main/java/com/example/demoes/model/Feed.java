@@ -6,8 +6,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import java.util.List;
-
 
 /**
  * @author tangmengyue
@@ -18,7 +16,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(indexName = "index_name", type = "table_name")
+@Document(indexName = "index_name")
 public class Feed {
 
     private String personId;
