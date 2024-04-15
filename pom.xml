@@ -23,6 +23,7 @@
         <module>demo-neo4j</module>
         <module>demo-es</module>
         <module>demo-metrics</module>
+        <module>demo-lucene</module>
 
     </modules>
     <parent>
