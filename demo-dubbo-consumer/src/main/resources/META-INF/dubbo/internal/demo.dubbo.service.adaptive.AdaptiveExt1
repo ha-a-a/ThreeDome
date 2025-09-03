@@ -1,4 +1,0 @@
-dubbo=demo.dubbo.service.adaptive.impl.DubboAdaptiveExt1
-cloud=demo.dubbo.service.adaptive.impl.SpringCloudAdaptiveExt1
-thrift=demo.dubbo.service.adaptive.impl.ThriftAdaptiveExt1
-common=demo.dubbo.service.adaptive.wrapper.AdaptiveExt1Wrapper

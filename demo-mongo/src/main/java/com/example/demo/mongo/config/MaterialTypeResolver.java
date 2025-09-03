@@ -1,10 +1,9 @@
 package com.example.demo.mongo.config;
 
-import com.example.timeline.demo.common.GlobalCons;
-import com.example.timeline.demo.mongo.pojo.bindingdata.CarouselMaterialInfo;
-import com.example.timeline.demo.mongo.pojo.bindingdata.ListMaterialInfo;
-import com.example.timeline.demo.mongo.pojo.bindingdata.MaterialInfo;
-import com.example.timeline.demo.mongo.pojo.bindingdata.TimelineMaterialInfo;
+import com.example.demo.mongo.pojo.bindingdata.CarouselMaterialInfo;
+import com.example.demo.mongo.pojo.bindingdata.ListMaterialInfo;
+import com.example.demo.mongo.pojo.bindingdata.MaterialInfo;
+import com.example.demo.mongo.pojo.bindingdata.TimelineMaterialInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.DatabindContext;
 import com.fasterxml.jackson.databind.JavaType;
@@ -45,11 +44,11 @@ public class MaterialTypeResolver implements TypeIdResolver {
 
     @Override
     public JavaType typeFromId(DatabindContext context, String id) throws IOException {
-        if (id.equals(GlobalCons.CONTAINER_TIMELINE))
+        if (id.equals(1))
             return context.constructSpecializedType(context.constructType(MaterialInfo.class), TimelineMaterialInfo.class);
-        if (id.equals(GlobalCons.CONTAINER_LIST))
+        if (id.equals(2))
             return context.constructSpecializedType(context.constructType(MaterialInfo.class), ListMaterialInfo.class);
-        if (id.equals(GlobalCons.CONTAINER_CAROUSEL))
+        if (id.equals(3))
             return context.constructSpecializedType(context.constructType(MaterialInfo.class), CarouselMaterialInfo.class);
         return null;
     }

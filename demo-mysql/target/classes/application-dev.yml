@@ -2,9 +2,9 @@ spring:
   datasource:
     druid:
       operator:
-        url: jdbc:mysql://10.18.54.199:3306/mario_admin?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
-        username: mario_admin_rw
-        password: 4301vN59116T5Ug
+        url: jdbc:mysql://1localhost/operator?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+        username: xxxx
+        password: xxxx
         driverClassName: com.mysql.jdbc.Driver
         initial-size: 2
         max-active: 2
@@ -13,9 +13,9 @@ spring:
         validation-query: select 1
         connection-init-sqls: SET NAMES utf8mb4
       message:
-        url: jdbc:mysql://10.18.54.199:3306/mario_admin?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
-        username: mario_admin_rw
-        password: 4301vN59116T5Ug
+        url: jdbc:mysql://localhost:3306/message?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+        username: xxxx
+        password: xxxx
         driverClassName: com.mysql.jdbc.Driver
         initial-size: 2
         max-active: 2

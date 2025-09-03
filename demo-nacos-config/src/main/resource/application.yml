@@ -1,8 +1,3 @@
-nacos:
-  config:
-   server-addr: 127.0.0.1:8848
-  discovery:
-    server-addr: 127.0.0.1:8848
 server:
   port: 8080
   servlet:
@@ -10,6 +5,17 @@ server:
 spring:
   application:
     name: demo-nacos-config
-
-
-
+nacos:
+  config:
+    bootstrap:
+      enable: true
+    server-addr: https://test.tmy.com/:8848
+    username: nacos
+    password: nacos
+    namespace: three-demo-test
+    group: test_group
+    data-ids: test_data.yml, test_mysql.yml
+    type: yaml
+    auto-refresh: true
+  discovery:
+    server-addr: https://test.tmy.com/:8848

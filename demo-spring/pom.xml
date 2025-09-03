@@ -4,14 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>demo</artifactId>
+        <artifactId>ThreeDome</artifactId>
         <groupId>com.example.demo</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <version>0.0.1-SNAPSHOT</version>
     <artifactId>demo-spring</artifactId>
     <name>demo-spring</name>
-    <packaging>war</packaging>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -49,6 +48,20 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <version>3.0.7</version>
+            <type>pom</type>
+        </dependency>
     </dependencies>
-
+    <build>
+        <finalName>demo-spring</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>

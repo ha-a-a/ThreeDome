@@ -1,7 +1,7 @@
 package com.example.demo.mongo.service;
 
-import com.example.timeline.demo.mongo.pojo.json.SeqInfo;
-import com.example.timeline.demo.annotation.AutoIncKey;
+import com.example.demo.mongo.pojo.autoinc.SeqInfo;
+import com.example.demo.mongo.pojo.autoinc.annotation.AutoIncKey;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,6 @@ import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ReflectionUtils;
 
-import java.lang.reflect.Field;
 
 /**
  * @FUNC
@@ -34,15 +33,12 @@ public class SaveEventListener extends AbstractMongoEventListener<Object> {
         Object source = event.getSource();
         logger.info("source:{}", source);
         if (null != source) {
-            ReflectionUtils.doWithFields(source.getClass(), new ReflectionUtils.FieldCallback() {
-                @Override
-                public void doWith(Field field) throws IllegalArgumentException, IllegalAccessException {
-                    logger.info("field:{}", field);
-                    ReflectionUtils.makeAccessible(field);
-                    if (field.isAnnotationPresent(AutoIncKey.class)&& field.get(source) instanceof Number
-                            && field.getLong(source) == 0) {
-                        field.set(source, getNextId(source.getClass().getSimpleName()));
-                    }
+            ReflectionUtils.doWithFields(source.getClass(), field -> {
+                logger.info("field:{}", field);
+                ReflectionUtils.makeAccessible(field);
+                if (field.isAnnotationPresent(AutoIncKey.class)&& field.get(source) instanceof Number
+                        && field.getLong(source) == 0) {
+                    field.set(source, getNextId(source.getClass().getSimpleName()));
                 }
             });
         }
