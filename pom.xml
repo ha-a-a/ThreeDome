@@ -16,15 +16,9 @@
         <module>demo-dubbo-provider</module>
         <module>demo-dubbo-consumer</module>
         <module>demo-qrcode</module>
-        <module>demo-sharding-sphere</module>
         <module>demo-spring-netty-server</module>
         <module>demo-spring-netty-client</module>
         <module>demo-rocketmq</module>
-        <module>spring-canal</module>
-        <module>demo-promethous</module>
-        <module>demo-javaagent</module>
-        <module>demo-javaagent-hello</module>
-        <module>demo-monitor</module>
 
 
     </modules>
